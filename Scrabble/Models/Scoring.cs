@@ -32,7 +32,7 @@ namespace Scrabble.Models
             {'Z', 10}
         };
   
-    public string UserInput { get; }
+    public string UserInput { get; set; }
     public Scoring(string word)
     {
     UserInput = word;
