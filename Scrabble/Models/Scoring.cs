@@ -42,18 +42,14 @@ namespace Scrabble.Models
       string UpperCased = UserInput.ToUpper();
       return UpperCased.ToList();
     }
-    public List<int> GetScore(List<char> charList)
+    public int GetScore(List<char> charList)
     {
       List<int> intList = new() { };
       for (int i = 0; i < charList.Count; i++)
       {
         intList.Add(_scoring[charList[i]]);
       }
-      return intList;
-
-      // list = { 'c', 'a', 't' }
-      // dict = {{'A': 1}}
-      // want: {3, 1, 1}
+      return intList.Aggregate((sum, x) => sum + x);
     }
 
   }
