@@ -29,5 +29,14 @@ namespace Scrabble.Tests
       newScoring.UserInput = newInput;
       Assert.AreEqual(newInput, newScoring.UserInput);
     }
+
+    [TestMethod]
+    public void Listify_ConvertsStringToList_List()
+    {
+    Scoring newScoring = new("cat");
+    List<char> charList = newScoring.Listify();
+    List<char> expected = new() {'C', 'A','T'};
+    CollectionAssert.AreEqual(charList, expected);
+    }
   }
 }

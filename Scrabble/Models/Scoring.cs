@@ -37,6 +37,10 @@ namespace Scrabble.Models
     {
     UserInput = word;
     }
-  
+    public List<char> Listify()
+    {
+      string UpperCased = UserInput.ToUpper();  
+      return UpperCased.ToList();
+    }
   }
 }
