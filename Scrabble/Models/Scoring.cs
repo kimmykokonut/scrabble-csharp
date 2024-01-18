@@ -33,16 +33,18 @@ namespace Scrabble.Models
         };
 
     public string UserInput { get; set; }
+    //private static List<int> _instances = new() {};
     public Scoring(string word)
     {
       UserInput = word;
+      //_instances.Add(Scoring.GetScore(this.Listify()));
     }
     public List<char> Listify()
     {
       string UpperCased = UserInput.ToUpper();
       return UpperCased.ToList();
     }
-    public int GetScore(List<char> charList)
+    public  int GetScore(List<char> charList)
     {
       List<int> intList = new() { };
       for (int i = 0; i < charList.Count; i++)
