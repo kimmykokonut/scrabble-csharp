@@ -39,22 +39,46 @@ namespace Scrabble
     static int CalculateScore(Scoring newScoring)
     {
         List<char> charList = newScoring.Listify();
-        int score = newScoring.GetScore(charList);
+        int score = Scoring.GetScore(charList);
         return score;
     }
     static void PlayAgain()
     {
       Console.WriteLine("*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*");
-      Console.WriteLine("Do you want to play again? 'y' for yes, 'n' for no.");
-      string? answer = Console.ReadLine();
-      if (answer == "y" || answer == "Y")
+      Console.WriteLine("Type 'list' for a list of your running word scores.");
+      string showList = Console.ReadLine();
+      if (showList == "list")
       {
-        Main();
+        ShowList();
       }
-      else
+      else 
       {
-        Console.WriteLine(Banners.GoodBye);
+        Console.WriteLine("Do you want to play again? 'y' for yes, 'n' for no.");
+        string? answer = Console.ReadLine();
+        if (answer == "y" || answer == "Y")
+        {
+          Main();
+        }
+        else
+        {
+          Console.WriteLine(Banners.GoodBye);
+        }
       }
+    static void ShowList()
+    {
+      List<int> scores = Scoring.GetAll();
+        if (scores.Count > 0)
+        {
+          Console.WriteLine("-----------------------------------------");
+          Console.WriteLine($"Here is the list of Scrabble Scores: ");
+          Console.WriteLine("-----------------------------------------");
+          foreach (int score in scores)
+          {
+            Console.WriteLine($"Score: {score}");
+          //Word: { score.UserInput}
+          }
+        }
     }
   }
+}
 }
