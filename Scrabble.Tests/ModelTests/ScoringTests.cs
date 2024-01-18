@@ -38,5 +38,14 @@ namespace Scrabble.Tests
     List<char> expected = new() {'C', 'A','T'};
     CollectionAssert.AreEqual(charList, expected);
     }
+    [TestMethod]
+    public void GetScore_ConvertCharListToIntList_List()
+    {
+      Scoring newScoring = new("cat");
+      List<char> charList = newScoring.Listify();
+      List<int> intList = newScoring.GetScore(charList);
+      List<int> expected = new() {3, 1, 1};
+      CollectionAssert.AreEqual(intList, expected);
+    }
   }
 }

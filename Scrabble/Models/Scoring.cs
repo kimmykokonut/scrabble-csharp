@@ -2,7 +2,7 @@ namespace Scrabble.Models
 {
   public class Scoring
   {
-     private static Dictionary<char, int> _scoring = new() 
+    private static Dictionary<char, int> _scoring = new()
         {
             {'A', 1},
             {'E', 1},
@@ -31,16 +31,30 @@ namespace Scrabble.Models
             {'Q', 10},
             {'Z', 10}
         };
-  
+
     public string UserInput { get; set; }
     public Scoring(string word)
     {
-    UserInput = word;
+      UserInput = word;
     }
     public List<char> Listify()
     {
-      string UpperCased = UserInput.ToUpper();  
+      string UpperCased = UserInput.ToUpper();
       return UpperCased.ToList();
     }
+    public List<int> GetScore(List<char> charList)
+    {
+      List<int> intList = new() { };
+      for (int i = 0; i < charList.Count; i++)
+      {
+        intList.Add(_scoring[charList[i]]);
+      }
+      return intList;
+
+      // list = { 'c', 'a', 't' }
+      // dict = {{'A': 1}}
+      // want: {3, 1, 1}
+    }
+
   }
 }
