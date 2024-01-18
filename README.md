@@ -20,3 +20,8 @@ Here are the values of letters in Scrabble:
 * Q, Z                               10
 
 
+stretch goals:
+-test _instances (added at last minute)
+-fix branching to have options (navigate method?) show list, playgain, quit.
+-make _instances a Dict to show key: word, value: score. currently shows score.
+
